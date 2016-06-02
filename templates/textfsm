@@ -1,0 +1,10 @@
+Value Required classMapName (\S+)
+Value bandwidthExceedDrops (\S+)
+Value totalDrops_nobufferDrops (.+)
+Value totalDrops_nobufferDrops_flowDrops (.+)
+
+Start
+        ^\s+Class-map: ${classMapName}
+        ^\s+Priority.+\b: ${bandwidthExceedDrops} -> Record
+        ^\s+\(queue depth\/total drops\/no-buffer drops\)\s+.+?\/+${totalDrops_nobufferDrops} -> Record
+        ^\s+\(queue depth\/total drops\/no-buffer drops\/flowdrops\)\s+.+?\/+${totalDrops_nobufferDrops_flowDrops} -> Record
