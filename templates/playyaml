@@ -1,0 +1,21 @@
+---
+
+- name: GET STRUCTURED DATA BACK FROM CLI DEVICES
+  hosts: cisco_ios
+  connection: local
+  gather_facts: False
+  vars:
+  tasks:
+
+    - name: GET QOS STATISTICS IN REAL TIME
+      ntc_show_command:
+        connection: ssh
+        platform: "{{ platform }}"
+        command: "{{ show_qos_wag }}"
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+      register: results
+    - debug: var=results
+    - debug: var=hostvars[inventory_hostname]
+    - template: src=/home/andrew/ansible/ntc-ansible/templates/blah dest=/tmp/set-var.html
