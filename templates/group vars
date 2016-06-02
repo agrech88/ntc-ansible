@@ -1,0 +1,5 @@
+---
+
+platform: cisco_ios
+
+show_qos_wag: show policy-map interface fastEthernet 4 output | b QoS-OUTBOUND-RETAIL-WAN-POLICY-A
